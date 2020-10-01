@@ -1,0 +1,19 @@
+23/Septiembre/2020
+Tiempo:1 hr 45 min
+Avances:
+1.- Haremos un sistema que administre negocios y que sea ajustable.
+2.- El lenguaje de programación será Java.
+3.- Puestos:
+	Chalico Montoya Israel, Moderador
+	Estrada Sosa Osvaldo Israel, Administrador carpeta y programador
+	Juaréz Pinal Carlos Aldayr, Vocero
+	Vivas Laurrabaquio Leslie Valeria, Lider y programadora
+4.- Recursos extra:
+	Curso de Java 6 hr
+	Curso de Git y Github 6 hr
+	Curso de desarrollo de aplicaciones 4hr
+	
+	
+	
+	
+
