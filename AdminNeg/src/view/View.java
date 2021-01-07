@@ -24,6 +24,7 @@ public class View extends javax.swing.JFrame {
         proveedoresPanel1 = new view.ProveedoresPanel();
         categoriaPanel2 = new view.CategoriaPanel();
         articuloPanel3 = new view.ArticulosPanel();
+        usuariosPanel1 = new view.UsuariosPanel();
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -69,12 +70,13 @@ public class View extends javax.swing.JFrame {
         jTabbedPane1.addTab("Proveedores", proveedoresPanel1);
         jTabbedPane1.addTab("Categorias", categoriaPanel2);
         jTabbedPane1.addTab("Articulos", articuloPanel3);
+        jTabbedPane1.addTab("Usuarios", usuariosPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,6 +137,7 @@ public class View extends javax.swing.JFrame {
     private view.ProductoPanel productoPanel1;
     private view.ProductoPanel productoPanel2;
     private view.ProveedoresPanel proveedoresPanel1;
+    private view.UsuariosPanel usuariosPanel1;
     private view.VenderPanel ventasPanel1;
     // End of variables declaration//GEN-END:variables
 }
