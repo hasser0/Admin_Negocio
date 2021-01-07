@@ -14,10 +14,16 @@ public class View extends javax.swing.JFrame {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jMenuItem1 = new javax.swing.JMenuItem();
         productoPanel1 = new view.ProductoPanel();
+        categoriaPanel1 = new view.CategoriaPanel();
+        articuloPanel1 = new view.ArticulosPanel();
+        articuloPanel2 = new view.ArticulosPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         productoPanel2 = new view.ProductoPanel();
         ventasPanel1 = new view.VenderPanel();
         inventario1 = new view.InventarioPanel();
+        proveedoresPanel1 = new view.ProveedoresPanel();
+        categoriaPanel2 = new view.CategoriaPanel();
+        articuloPanel3 = new view.ArticulosPanel();
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -43,12 +49,26 @@ public class View extends javax.swing.JFrame {
 
         jMenuItem1.setText("jMenuItem1");
 
+        javax.swing.GroupLayout categoriaPanel1Layout = new javax.swing.GroupLayout(categoriaPanel1);
+        categoriaPanel1.setLayout(categoriaPanel1Layout);
+        categoriaPanel1Layout.setHorizontalGroup(
+            categoriaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 716, Short.MAX_VALUE)
+        );
+        categoriaPanel1Layout.setVerticalGroup(
+            categoriaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 386, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jTabbedPane1.addTab("Productos", productoPanel2);
         jTabbedPane1.addTab("Vender", ventasPanel1);
         jTabbedPane1.addTab("Inventario", inventario1);
+        jTabbedPane1.addTab("Proveedores", proveedoresPanel1);
+        jTabbedPane1.addTab("Categorias", categoriaPanel2);
+        jTabbedPane1.addTab("Articulos", articuloPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,6 +121,11 @@ public class View extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private view.ArticulosPanel articuloPanel1;
+    private view.ArticulosPanel articuloPanel2;
+    private view.ArticulosPanel articuloPanel3;
+    private view.CategoriaPanel categoriaPanel1;
+    private view.CategoriaPanel categoriaPanel2;
     private view.InventarioPanel inventario1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel7;
@@ -109,6 +134,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private view.ProductoPanel productoPanel1;
     private view.ProductoPanel productoPanel2;
+    private view.ProveedoresPanel proveedoresPanel1;
     private view.VenderPanel ventasPanel1;
     // End of variables declaration//GEN-END:variables
 }
