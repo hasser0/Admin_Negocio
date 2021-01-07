@@ -9,12 +9,12 @@ package view;
  *
  * @author hasser
  */
-public class VenderPanel extends javax.swing.JPanel {
+public class SellPane extends javax.swing.JPanel {
 
     /**
      * Creates new form VentasPanel
      */
-    public VenderPanel() {
+    public SellPane() {
         initComponents();
     }
 
@@ -34,9 +34,9 @@ public class VenderPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        nameSellLabel = new javax.swing.JLabel();
+        numSellLabel = new javax.swing.JLabel();
+        totalSellLabel = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         textField1 = new java.awt.TextField();
         textField2 = new java.awt.TextField();
@@ -46,7 +46,7 @@ public class VenderPanel extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        sellTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
 
@@ -70,14 +70,14 @@ public class VenderPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jList1);
 
-        jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        jLabel1.setText("Producto:");
+        nameSellLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        nameSellLabel.setText("Producto:");
 
-        jLabel2.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        jLabel2.setText("Cantidad:");
+        numSellLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        numSellLabel.setText("Cantidad:");
 
-        jLabel3.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        jLabel3.setText("Total:");
+        totalSellLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        totalSellLabel.setText("Total:");
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         jSpinner1.setValue(1);
@@ -113,11 +113,11 @@ public class VenderPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setText("Cancelar");
+        jButton4.setText("Borrar");
 
         jButton5.setText("Limpiar");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        sellTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -125,7 +125,7 @@ public class VenderPanel extends javax.swing.JPanel {
                 "PRODUCTO", "CANTIDAD", "PRECIO", "TOTAL"
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(sellTable);
 
         jLabel4.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         jLabel4.setText("Total:");
@@ -145,34 +145,31 @@ public class VenderPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(totalSellLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(numSellLabel, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(nameSellLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(27, 27, 27)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(35, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addComponent(jButton1)
-                                .addGap(34, 34, 34)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3)
-                                .addGap(44, 44, 44)
-                                .addComponent(jButton4)))
-                        .addGap(33, 33, 33)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton1)
+                        .addGap(34, 34, 34)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton5)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -185,15 +182,15 @@ public class VenderPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
+                            .addComponent(nameSellLabel)
                             .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
+                            .addComponent(numSellLabel)
                             .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
+                            .addComponent(totalSellLabel)
                             .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
@@ -234,9 +231,6 @@ public class VenderPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -247,9 +241,12 @@ public class VenderPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel nameSellLabel;
+    private javax.swing.JLabel numSellLabel;
+    private javax.swing.JTable sellTable;
     private java.awt.TextField textField1;
     private java.awt.TextField textField2;
+    private javax.swing.JLabel totalSellLabel;
     // End of variables declaration//GEN-END:variables
 }

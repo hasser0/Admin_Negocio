@@ -9,12 +9,12 @@ package view;
  *
  * @author hasser
  */
-public class ProveedoresPanel extends javax.swing.JPanel {
+public class ProviderPane extends javax.swing.JPanel {
 
     /**
      * Creates new form ProveedoresPanel
      */
-    public ProveedoresPanel() {
+    public ProviderPane() {
         initComponents();
     }
 
@@ -27,40 +27,40 @@ public class ProveedoresPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        nameProvLabel = new javax.swing.JLabel();
+        telProvLabel = new javax.swing.JLabel();
+        nameProvText = new javax.swing.JTextField();
+        telProvText = new javax.swing.JTextField();
+        addProvBtn = new javax.swing.JButton();
+        cleanProvBtn = new javax.swing.JButton();
+        delProvBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        provTable = new javax.swing.JTable();
 
-        jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        jLabel1.setText("Nombre:");
+        nameProvLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        nameProvLabel.setText("Nombre:");
 
-        jLabel2.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        jLabel2.setText("Telefono:");
+        telProvLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        telProvLabel.setText("Telefono:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nameProvText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nameProvTextActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addProvBtn.setText("Agregar");
+        addProvBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addProvBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Limpiar");
+        cleanProvBtn.setText("Limpiar");
 
-        jButton3.setText("Borrar");
+        delProvBtn.setText("Borrar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        provTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -68,7 +68,7 @@ public class ProveedoresPanel extends javax.swing.JPanel {
                 "NOMBRE", "TELEFONO"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(provTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -78,19 +78,19 @@ public class ProveedoresPanel extends javax.swing.JPanel {
                 .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(33, 33, 33)
-                        .addComponent(jButton2)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addComponent(nameProvLabel)
+                            .addComponent(telProvLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addComponent(jTextField1))))
+                            .addComponent(telProvText, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                            .addComponent(nameProvText)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addProvBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
+                        .addComponent(cleanProvBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(delProvBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(65, Short.MAX_VALUE))
@@ -102,17 +102,17 @@ public class ProveedoresPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nameProvLabel)
+                            .addComponent(nameProvText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(telProvLabel)
+                            .addComponent(telProvText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
+                            .addComponent(addProvBtn)
+                            .addComponent(cleanProvBtn)
+                            .addComponent(delProvBtn)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -120,24 +120,24 @@ public class ProveedoresPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void nameProvTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameProvTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_nameProvTextActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addProvBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProvBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addProvBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton addProvBtn;
+    private javax.swing.JButton cleanProvBtn;
+    private javax.swing.JButton delProvBtn;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel nameProvLabel;
+    private javax.swing.JTextField nameProvText;
+    private javax.swing.JTable provTable;
+    private javax.swing.JLabel telProvLabel;
+    private javax.swing.JTextField telProvText;
     // End of variables declaration//GEN-END:variables
 }

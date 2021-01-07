@@ -9,12 +9,12 @@ package view;
  *
  * @author hasser
  */
-public class ProductoPanel extends javax.swing.JPanel {
+public class SrchProductPane extends javax.swing.JPanel {
 
     /**
      * Creates new form ProductoPanel
      */
-    public ProductoPanel() {
+    public SrchProductPane() {
         initComponents();
     }
 
@@ -27,23 +27,23 @@ public class ProductoPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        nameSrchProdText = new javax.swing.JTextField();
+        nameSrchProdLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        srchProdTable = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(700, 400));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        nameSrchProdText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                nameSrchProdTextActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        jLabel1.setText("Productos: ");
+        nameSrchProdLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        nameSrchProdLabel.setText("Productos: ");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        srchProdTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -51,7 +51,7 @@ public class ProductoPanel extends javax.swing.JPanel {
                 "ID", "NOMBRE", "PRECIO", "CATEGORIA"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(srchProdTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -64,9 +64,9 @@ public class ProductoPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(137, 137, 137)
-                        .addComponent(jLabel1)
+                        .addComponent(nameSrchProdLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(nameSrchProdText, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -74,23 +74,23 @@ public class ProductoPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(nameSrchProdText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameSrchProdLabel))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(58, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void nameSrchProdTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameSrchProdTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_nameSrchProdTextActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel nameSrchProdLabel;
+    private javax.swing.JTextField nameSrchProdText;
+    private javax.swing.JTable srchProdTable;
     // End of variables declaration//GEN-END:variables
 }

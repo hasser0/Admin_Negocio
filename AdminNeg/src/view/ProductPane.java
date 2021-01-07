@@ -9,12 +9,12 @@ package view;
  *
  * @author hasser
  */
-public class ArticulosPanel extends javax.swing.JPanel {
+public class ProductPane extends javax.swing.JPanel {
 
     /**
      * Creates new form ArticuloPanel
      */
-    public ArticulosPanel() {
+    public ProductPane() {
         initComponents();
     }
 
@@ -27,20 +27,21 @@ public class ArticulosPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        addProdBtn = new javax.swing.JButton();
+        delProdBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        prodTable = new javax.swing.JTable();
+        nameProdLabel = new javax.swing.JLabel();
+        nameProdText = new javax.swing.JTextField();
+        changeProdBtn = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(700, 400));
 
-        jButton1.setText("Agregar");
+        addProdBtn.setText("Agregar");
 
-        jButton3.setText("Borrar");
+        delProdBtn.setText("Borrar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        prodTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -48,10 +49,12 @@ public class ArticulosPanel extends javax.swing.JPanel {
                 "ID", "NOMBRE"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(prodTable);
 
-        jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        jLabel1.setText("Nombre Articulo");
+        nameProdLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
+        nameProdLabel.setText("Nombre Producto");
+
+        changeProdBtn.setText("Modificar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -60,13 +63,15 @@ public class ArticulosPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(nameProdLabel)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(addProdBtn)
                         .addGap(26, 26, 26)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addComponent(delProdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(changeProdBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
+                    .addComponent(nameProdText, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
         );
@@ -79,24 +84,26 @@ public class ArticulosPanel extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(133, 133, 133)
-                        .addComponent(jLabel1)
+                        .addComponent(nameProdLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nameProdText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton3))))
-                .addContainerGap(78, Short.MAX_VALUE))
+                            .addComponent(addProdBtn)
+                            .addComponent(delProdBtn)
+                            .addComponent(changeProdBtn))))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton addProdBtn;
+    private javax.swing.JButton changeProdBtn;
+    private javax.swing.JButton delProdBtn;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel nameProdLabel;
+    private javax.swing.JTextField nameProdText;
+    private javax.swing.JTable prodTable;
     // End of variables declaration//GEN-END:variables
 }
