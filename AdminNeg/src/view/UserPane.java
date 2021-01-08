@@ -162,7 +162,12 @@ public class UserPane extends javax.swing.JPanel {
     }//GEN-LAST:event_permUserBoxActionPerformed
 
     private void cleanUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanUserBtnActionPerformed
-        // TODO add your handling code here:
+        if(evt.getSource() == cleanUserBtn){
+            idUserText.setText("");
+            nameUserText.setText("");
+            pwdUserText.setText("");
+            permUserBox.setSelectedIndex(0);
+        }
     }//GEN-LAST:event_cleanUserBtnActionPerformed
 
 

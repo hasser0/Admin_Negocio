@@ -57,6 +57,11 @@ public class InventoryPane extends javax.swing.JPanel {
         buyStcBtn.setText("Comprar");
 
         cleanStcBtn.setText("Limpiar");
+        cleanStcBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cleanStcBtnActionPerformed(evt);
+            }
+        });
 
         stcTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -146,6 +151,13 @@ public class InventoryPane extends javax.swing.JPanel {
     private void delStcBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delStcBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_delStcBtnActionPerformed
+
+    private void cleanStcBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanStcBtnActionPerformed
+        if(evt.getSource() == cleanStcBtn){
+            nameStcText.setText("");
+            numStcText.setText("");
+        }
+    }//GEN-LAST:event_cleanStcBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

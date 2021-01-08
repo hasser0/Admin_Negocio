@@ -17,9 +17,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="nameProvLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="telProvLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -30,12 +30,13 @@
                           <Component id="nameProvText" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="addProvBtn" min="-2" pref="68" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="cleanProvBtn" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                      <Component id="addProvBtn" min="-2" pref="80" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="cleanProvBtn" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="delProvBtn" min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="delProvBtn" min="-2" pref="78" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -59,11 +60,11 @@
                           <Component id="telProvLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="telProvText" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="addProvBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cleanProvBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="delProvBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cleanProvBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="addProvBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -112,6 +113,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Limpiar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cleanProvBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="delProvBtn">
       <Properties>

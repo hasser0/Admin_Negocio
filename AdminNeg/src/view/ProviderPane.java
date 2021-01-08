@@ -57,6 +57,11 @@ public class ProviderPane extends javax.swing.JPanel {
         });
 
         cleanProvBtn.setText("Limpiar");
+        cleanProvBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cleanProvBtnActionPerformed(evt);
+            }
+        });
 
         delProvBtn.setText("Borrar");
 
@@ -75,9 +80,9 @@ public class ProviderPane extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nameProvLabel)
                             .addComponent(telProvLabel))
@@ -86,11 +91,12 @@ public class ProviderPane extends javax.swing.JPanel {
                             .addComponent(telProvText, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                             .addComponent(nameProvText)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(addProvBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
-                        .addComponent(cleanProvBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(addProvBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(cleanProvBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(delProvBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(delProvBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(65, Short.MAX_VALUE))
@@ -108,11 +114,11 @@ public class ProviderPane extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(telProvLabel)
                             .addComponent(telProvText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(56, 56, 56)
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addProvBtn)
+                            .addComponent(delProvBtn)
                             .addComponent(cleanProvBtn)
-                            .addComponent(delProvBtn)))
+                            .addComponent(addProvBtn)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -127,6 +133,13 @@ public class ProviderPane extends javax.swing.JPanel {
     private void addProvBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProvBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addProvBtnActionPerformed
+
+    private void cleanProvBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanProvBtnActionPerformed
+        if(evt.getSource() == cleanProvBtn){
+            nameProvText.setText("");
+            telProvText.setText("");
+        }
+    }//GEN-LAST:event_cleanProvBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
