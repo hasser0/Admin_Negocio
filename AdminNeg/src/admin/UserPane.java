@@ -1,21 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package view;
-
-/**
- *
- * @author hasser
- */
+package admin;
+import java.awt.HeadlessException;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 public class UserPane extends javax.swing.JPanel {
 
-    /**
-     * Creates new form UsuariosPanel
-     */
-    public UserPane() {
+    DBC con =  DBC.getInstance();
+    
+    public UserPane() throws SQLException {
         initComponents();
+        chargeTable();
     }
 
     /**
@@ -67,6 +63,11 @@ public class UserPane extends javax.swing.JPanel {
         });
 
         addUserBtn.setText("Agregar");
+        addUserBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addUserBtnActionPerformed(evt);
+            }
+        });
 
         cleanUserBtn.setText("Limpiar");
         cleanUserBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +77,11 @@ public class UserPane extends javax.swing.JPanel {
         });
 
         delUserBtn.setText("Borrar");
+        delUserBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delUserBtnActionPerformed(evt);
+            }
+        });
 
         pwdUserLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         pwdUserLabel.setText("Contraseña:");
@@ -98,9 +104,9 @@ public class UserPane extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(idUserLabel)
                             .addComponent(pwdUserLabel)
@@ -112,16 +118,16 @@ public class UserPane extends javax.swing.JPanel {
                             .addComponent(pwdUserText)
                             .addComponent(permUserBox, 0, 142, Short.MAX_VALUE)
                             .addComponent(idUserText))
-                        .addGap(12, 12, 12))
+                        .addGap(27, 27, 27))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(addUserBtn)
-                        .addGap(24, 24, 24)
-                        .addComponent(cleanUserBtn)
+                        .addGap(32, 32, 32)
+                        .addComponent(addUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cleanUserBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(delUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(delUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
@@ -145,11 +151,11 @@ public class UserPane extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(permUserBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(permUserLabel))
-                        .addGap(42, 42, 42)
+                        .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addUserBtn)
-                            .addComponent(cleanUserBtn)
-                            .addComponent(delUserBtn)))
+                            .addComponent(cleanUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(delUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -162,13 +168,78 @@ public class UserPane extends javax.swing.JPanel {
     }//GEN-LAST:event_permUserBoxActionPerformed
 
     private void cleanUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanUserBtnActionPerformed
-        if(evt.getSource() == cleanUserBtn){
-            idUserText.setText("");
-            nameUserText.setText("");
-            pwdUserText.setText("");
-            permUserBox.setSelectedIndex(0);
-        }
+        idUserText.setText("");
+        nameUserText.setText("");
+        pwdUserText.setText("");
+        permUserBox.setSelectedIndex(0);
+
     }//GEN-LAST:event_cleanUserBtnActionPerformed
+    private void chargeTable() throws SQLException{
+        try{
+            DefaultTableModel model = new DefaultTableModel();
+            userTable.setModel(model);
+            Connection connection = con.open();
+            PreparedStatement userSel = connection.prepareStatement("Select id,name,permission from user");
+
+            ResultSet data = userSel.executeQuery();
+            ResultSetMetaData metadata = userSel.getMetaData();
+            int numCol = metadata.getColumnCount();
+            model.addColumn("ID");
+            model.addColumn("Nombre");
+            model.addColumn("Permiso");
+            userTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+            userTable.getColumnModel().getColumn(1).setPreferredWidth(150);
+            userTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+            while(data.next()){
+                Object row[] = new Object[3];
+                for(int i=0;i<3;i++){
+                    row[i] = data.getObject(i+1);
+                }
+                model.addRow(row);
+            }
+            con.close();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error: "+e);
+        }
+    }
+    private void addUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserBtnActionPerformed
+        try{
+            Connection connection = con.open();
+            PreparedStatement addUser = connection.prepareStatement("insert into user values(?,?,?,?)");
+            addUser.setString(1, idUserText.getText().trim().toUpperCase());
+            addUser.setString(2, nameUserText.getText().trim().toUpperCase());
+            addUser.setString(3, pwdUserText.getText().trim().toUpperCase());
+            addUser.setString(4, permUserBox.getSelectedItem().toString().toUpperCase());
+            addUser.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Usuario añadido");
+            chargeTable();
+            cleanUserBtnActionPerformed(evt);
+            con.close();
+            
+        }catch(HeadlessException | SQLException e){
+            JOptionPane.showMessageDialog(null,"Error: "+e);
+        }
+    }//GEN-LAST:event_addUserBtnActionPerformed
+
+    private void delUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delUserBtnActionPerformed
+        if(userTable.getSelectedRow()==-1){
+            JOptionPane.showMessageDialog(null,"Selecciona una fila");
+            return;
+        }
+        try{
+            Connection connection = con.open();
+            PreparedStatement delUser = connection.prepareStatement("delete from user where id = ?");
+            delUser.setString(1, userTable.getModel().getValueAt(userTable.getSelectedRow(), 0).toString());
+            
+            delUser.execute();
+            JOptionPane.showMessageDialog(null, "Usuario Eliminado");
+            chargeTable();
+            con.close();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+
+        }
+    }//GEN-LAST:event_delUserBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
