@@ -9,7 +9,7 @@ public class UserPane extends javax.swing.JPanel {
 
     DBC con =  DBC.getInstance();
     
-    public UserPane() throws SQLException {
+    public UserPane() throws SQLException{
         initComponents();
         chargeTable();
     }
@@ -97,7 +97,9 @@ public class UserPane extends javax.swing.JPanel {
                 "ID", "NOMBRE", "PERMISO"
             }
         ));
+        userTable.setColumnSelectionAllowed(true);
         jScrollPane3.setViewportView(userTable);
+        userTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -208,7 +210,7 @@ public class UserPane extends javax.swing.JPanel {
             PreparedStatement addUser = connection.prepareStatement("insert into user values(?,?,?,?)");
             addUser.setString(1, idUserText.getText().trim().toUpperCase());
             addUser.setString(2, nameUserText.getText().trim().toUpperCase());
-            addUser.setString(3, pwdUserText.getText().trim().toUpperCase());
+            addUser.setString(3, pwdUserText.getText().trim());
             addUser.setString(4, permUserBox.getSelectedItem().toString().toUpperCase());
             addUser.executeUpdate();
             JOptionPane.showMessageDialog(null, "Usuario añadido");
@@ -231,7 +233,7 @@ public class UserPane extends javax.swing.JPanel {
             PreparedStatement delUser = connection.prepareStatement("delete from user where id = ?");
             delUser.setString(1, userTable.getModel().getValueAt(userTable.getSelectedRow(), 0).toString());
             
-            delUser.execute();
+            delUser.executeUpdate();
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");
             chargeTable();
             con.close();

@@ -35,18 +35,16 @@ public class CategoryPane extends javax.swing.JPanel {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, true
-            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return false;
             }
         });
+        catTable.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(catTable);
 
         addCatBtn.setText("Agregar");
