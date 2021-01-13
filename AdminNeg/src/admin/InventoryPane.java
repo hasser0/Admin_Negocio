@@ -34,27 +34,44 @@ public class InventoryPane extends javax.swing.JPanel {
         buyStcBtn = new javax.swing.JButton();
         cleanStcBtn = new javax.swing.JButton();
         nameStcText = new javax.swing.JTextField();
-        numStcText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         stcTable = new javax.swing.JTable();
         delStcBtn = new javax.swing.JButton();
+        jSpinner1 = new javax.swing.JSpinner();
+
+        setLayout(null);
 
         nameStcLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         nameStcLabel.setText("Articulo:");
+        add(nameStcLabel);
+        nameStcLabel.setBounds(40, 100, 75, 26);
 
         numStcLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         numStcLabel.setText("Cantidad:");
+        add(numStcLabel);
+        numStcLabel.setBounds(30, 160, 85, 26);
 
         provStcBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 provStcBoxActionPerformed(evt);
             }
         });
+        add(provStcBox);
+        provStcBox.setBounds(130, 211, 150, 40);
 
         provStcLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         provStcLabel.setText("Proveedor:");
+        add(provStcLabel);
+        provStcLabel.setBounds(20, 220, 97, 26);
 
         buyStcBtn.setText("Comprar");
+        buyStcBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buyStcBtnActionPerformed(evt);
+            }
+        });
+        add(buyStcBtn);
+        buyStcBtn.setBounds(20, 290, 90, 50);
 
         cleanStcBtn.setText("Limpiar");
         cleanStcBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +79,10 @@ public class InventoryPane extends javax.swing.JPanel {
                 cleanStcBtnActionPerformed(evt);
             }
         });
+        add(cleanStcBtn);
+        cleanStcBtn.setBounds(120, 290, 90, 50);
+        add(nameStcText);
+        nameStcText.setBounds(130, 90, 150, 40);
 
         stcTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,75 +94,21 @@ public class InventoryPane extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(stcTable);
 
+        add(jScrollPane1);
+        jScrollPane1.setBounds(332, 34, 360, 330);
+
         delStcBtn.setText("Borrar");
         delStcBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delStcBtnActionPerformed(evt);
             }
         });
+        add(delStcBtn);
+        delStcBtn.setBounds(220, 290, 100, 50);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(buyStcBtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(cleanStcBtn)
-                                .addGap(25, 25, 25)
-                                .addComponent(delStcBtn))
-                            .addComponent(nameStcLabel)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(numStcLabel)
-                                .addGap(24, 24, 24))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(provStcLabel)
-                                .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(numStcText)
-                            .addComponent(nameStcText)
-                            .addComponent(provStcBox, 0, 150, Short.MAX_VALUE))))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nameStcText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nameStcLabel))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(numStcLabel)
-                            .addComponent(numStcText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(provStcBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(provStcLabel))
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buyStcBtn)
-                            .addComponent(cleanStcBtn)
-                            .addComponent(delStcBtn)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 0, 200, 1));
+        add(jSpinner1);
+        jSpinner1.setBounds(130, 150, 60, 40);
     }// </editor-fold>//GEN-END:initComponents
 
     private void provStcBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provStcBoxActionPerformed
@@ -153,11 +120,12 @@ public class InventoryPane extends javax.swing.JPanel {
     }//GEN-LAST:event_delStcBtnActionPerformed
 
     private void cleanStcBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanStcBtnActionPerformed
-        if(evt.getSource() == cleanStcBtn){
-            nameStcText.setText("");
-            numStcText.setText("");
-        }
+
     }//GEN-LAST:event_cleanStcBtnActionPerformed
+
+    private void buyStcBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyStcBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buyStcBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -165,10 +133,10 @@ public class InventoryPane extends javax.swing.JPanel {
     private javax.swing.JButton cleanStcBtn;
     private javax.swing.JButton delStcBtn;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel nameStcLabel;
     private javax.swing.JTextField nameStcText;
     private javax.swing.JLabel numStcLabel;
-    private javax.swing.JTextField numStcText;
     private javax.swing.JComboBox<String> provStcBox;
     private javax.swing.JLabel provStcLabel;
     private javax.swing.JTable stcTable;

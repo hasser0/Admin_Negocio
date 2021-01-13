@@ -1,19 +1,25 @@
 package admin;
 import java.awt.HeadlessException;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 public class UserPane extends javax.swing.JPanel {
 
     DBC con =  DBC.getInstance();
-    
-    public UserPane() throws SQLException{
+    private void init() throws SQLException{
         initComponents();
         chargeTable();
     }
 
+    public UserPane(){
+        ///////////////////
+        try{
+            init();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error: "+e);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,18 +55,26 @@ public class UserPane extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tableUser1);
 
+        setLayout(null);
+
         idUserLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         idUserLabel.setText("ID:");
+        add(idUserLabel);
+        idUserLabel.setBounds(120, 60, 25, 26);
 
         nameUserLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         nameUserLabel.setText("Nombre:");
+        add(nameUserLabel);
+        nameUserLabel.setBounds(70, 110, 79, 26);
 
-        permUserBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trabajador", "Administrador", "Jefe (no crear)" }));
+        permUserBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trabajador", "Administrador", " ", " " }));
         permUserBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 permUserBoxActionPerformed(evt);
             }
         });
+        add(permUserBox);
+        permUserBox.setBounds(170, 210, 160, 40);
 
         addUserBtn.setText("Agregar");
         addUserBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +82,8 @@ public class UserPane extends javax.swing.JPanel {
                 addUserBtnActionPerformed(evt);
             }
         });
+        add(addUserBtn);
+        addUserBtn.setBounds(32, 283, 97, 47);
 
         cleanUserBtn.setText("Limpiar");
         cleanUserBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +91,8 @@ public class UserPane extends javax.swing.JPanel {
                 cleanUserBtnActionPerformed(evt);
             }
         });
+        add(cleanUserBtn);
+        cleanUserBtn.setBounds(135, 283, 88, 47);
 
         delUserBtn.setText("Borrar");
         delUserBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -82,12 +100,30 @@ public class UserPane extends javax.swing.JPanel {
                 delUserBtnActionPerformed(evt);
             }
         });
+        add(delUserBtn);
+        delUserBtn.setBounds(235, 282, 89, 48);
+        add(idUserText);
+        idUserText.setBounds(170, 50, 160, 40);
+
+        nameUserText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameUserTextActionPerformed(evt);
+            }
+        });
+        add(nameUserText);
+        nameUserText.setBounds(170, 110, 160, 40);
 
         pwdUserLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         pwdUserLabel.setText("Contraseña:");
+        add(pwdUserLabel);
+        pwdUserLabel.setBounds(40, 170, 109, 26);
 
         permUserLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         permUserLabel.setText("Permiso:");
+        add(permUserLabel);
+        permUserLabel.setBounds(71, 220, 78, 26);
+        add(pwdUserText);
+        pwdUserText.setBounds(170, 160, 160, 40);
 
         userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,68 +137,8 @@ public class UserPane extends javax.swing.JPanel {
         jScrollPane3.setViewportView(userTable);
         userTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(idUserLabel)
-                            .addComponent(pwdUserLabel)
-                            .addComponent(nameUserLabel)
-                            .addComponent(permUserLabel))
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameUserText)
-                            .addComponent(pwdUserText)
-                            .addComponent(permUserBox, 0, 142, Short.MAX_VALUE)
-                            .addComponent(idUserText))
-                        .addGap(27, 27, 27))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(addUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cleanUserBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(delUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(idUserLabel)
-                            .addComponent(idUserText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nameUserLabel)
-                            .addComponent(nameUserText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pwdUserText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pwdUserLabel))
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(permUserBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(permUserLabel))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cleanUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(delUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(61, Short.MAX_VALUE))
-        );
+        add(jScrollPane3);
+        jScrollPane3.setBounds(342, 52, 370, 312);
     }// </editor-fold>//GEN-END:initComponents
 
     private void permUserBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_permUserBoxActionPerformed
@@ -242,6 +218,10 @@ public class UserPane extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_delUserBtnActionPerformed
+
+    private void nameUserTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameUserTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameUserTextActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

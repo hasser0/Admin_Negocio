@@ -33,15 +33,20 @@ public class SrchProductPane extends javax.swing.JPanel {
         srchProdTable = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(700, 400));
+        setLayout(null);
 
         nameSrchProdText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameSrchProdTextActionPerformed(evt);
             }
         });
+        add(nameSrchProdText);
+        nameSrchProdText.setBounds(255, 21, 224, 27);
 
         nameSrchProdLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
-        nameSrchProdLabel.setText("Productos: ");
+        nameSrchProdLabel.setText("Producto: ");
+        add(nameSrchProdLabel);
+        nameSrchProdLabel.setBounds(137, 19, 91, 26);
 
         srchProdTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -53,33 +58,8 @@ public class SrchProductPane extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(srchProdTable);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(nameSrchProdLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(nameSrchProdText, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameSrchProdText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameSrchProdLabel))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
+        add(jScrollPane2);
+        jScrollPane2.setBounds(29, 66, 641, 276);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nameSrchProdTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameSrchProdTextActionPerformed

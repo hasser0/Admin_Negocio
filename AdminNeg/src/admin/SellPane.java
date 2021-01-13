@@ -76,22 +76,22 @@ public class SellPane extends javax.swing.JPanel {
         nameSellLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         nameSellLabel.setText("Producto:");
         add(nameSellLabel);
-        nameSellLabel.setBounds(42, 52, 86, 26);
+        nameSellLabel.setBounds(40, 60, 86, 26);
 
         numSellLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         numSellLabel.setText("Cantidad:");
         add(numSellLabel);
-        numSellLabel.setBounds(42, 105, 85, 26);
+        numSellLabel.setBounds(40, 110, 85, 26);
 
         totalSellLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         totalSellLabel.setText("Total:");
         add(totalSellLabel);
-        totalSellLabel.setBounds(42, 168, 85, 26);
+        totalSellLabel.setBounds(70, 170, 60, 26);
 
-        numSellSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        numSellSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 200, 1));
         numSellSpinner.setValue(1);
         add(numSellSpinner);
-        numSellSpinner.setBounds(139, 107, 127, 28);
+        numSellSpinner.setBounds(139, 107, 60, 40);
 
         nameSellText.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         nameSellText.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +100,7 @@ public class SellPane extends javax.swing.JPanel {
             }
         });
         add(nameSellText);
-        nameSellText.setBounds(138, 48, 128, 30);
+        nameSellText.setBounds(140, 50, 140, 40);
 
         totalSellText.setEditable(false);
         totalSellText.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
@@ -111,7 +111,7 @@ public class SellPane extends javax.swing.JPanel {
             }
         });
         add(totalSellText);
-        totalSellText.setBounds(137, 164, 129, 30);
+        totalSellText.setBounds(137, 164, 140, 40);
 
         addSellBtn.setText("Agregar");
         addSellBtn.addActionListener(new java.awt.event.ActionListener() {
