@@ -43,6 +43,7 @@ public class ProviderPane extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         provTable = new javax.swing.JTable();
 
+        setPreferredSize(new java.awt.Dimension(700, 400));
         setLayout(null);
 
         nameProvLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
@@ -114,7 +115,7 @@ public class ProviderPane extends javax.swing.JPanel {
             DefaultTableModel model = new DefaultTableModel();
             provTable.setModel(model);
             Connection connection = con.open();
-            PreparedStatement provSel = connection.prepareStatement("Select id,name,tel from provider");
+            PreparedStatement provSel = connection.prepareStatement("Select id,name,tel from providers");
 
             ResultSet data = provSel.executeQuery();
             
@@ -138,10 +139,19 @@ public class ProviderPane extends javax.swing.JPanel {
         }
     }
     private void addProvBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProvBtnActionPerformed
+        if(nameProvText.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null, "Nombre vacio");
+            return;
+        }
+        if(telProvText.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Telefono vacio");
+            return;
+        }
+        
         try{
             Connection connection = con.open();
             
-            PreparedStatement addProv = connection.prepareStatement("insert into provider values (?,?,?)");
+            PreparedStatement addProv = connection.prepareStatement("insert into providers values (?,?,?)");
             addProv.setString(1, "0");
             addProv.setString(2,nameProvText.getText().trim().toUpperCase());
             addProv.setString(3,telProvText.getText().trim().toUpperCase());
@@ -168,7 +178,7 @@ public class ProviderPane extends javax.swing.JPanel {
         }
         try{
             Connection connection = con.open();
-            PreparedStatement delProv = connection.prepareStatement("delete from provider where id = ?");
+            PreparedStatement delProv = connection.prepareStatement("delete from providers where id = ?");
             delProv.setString(1, provTable.getModel().getValueAt(provTable.getSelectedRow(), 0).toString());
             delProv.executeUpdate();
             JOptionPane.showMessageDialog(null, "Usuario Eliminado");

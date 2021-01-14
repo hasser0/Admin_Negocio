@@ -4,18 +4,19 @@
  * and open the template in the editor.
  */
 package admin;
-
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author hasser
  */
 public class SrchProductPane extends javax.swing.JPanel {
-
-    /**
-     * Creates new form ProductoPanel
-     */
+    
+    DBC con = DBC.getInstance();
     public SrchProductPane() {
         initComponents();
+        chargeTable();
     }
 
     /**
@@ -32,21 +33,22 @@ public class SrchProductPane extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         srchProdTable = new javax.swing.JTable();
 
+        setMinimumSize(new java.awt.Dimension(700, 400));
         setPreferredSize(new java.awt.Dimension(700, 400));
-        setLayout(null);
 
         nameSrchProdText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameSrchProdTextActionPerformed(evt);
             }
         });
-        add(nameSrchProdText);
-        nameSrchProdText.setBounds(255, 21, 224, 27);
+        nameSrchProdText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nameSrchProdTextKeyReleased(evt);
+            }
+        });
 
         nameSrchProdLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         nameSrchProdLabel.setText("Producto: ");
-        add(nameSrchProdLabel);
-        nameSrchProdLabel.setBounds(137, 19, 91, 26);
 
         srchProdTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -58,14 +60,76 @@ public class SrchProductPane extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(srchProdTable);
 
-        add(jScrollPane2);
-        jScrollPane2.setBounds(29, 66, 641, 276);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(nameSrchProdLabel)
+                        .addGap(27, 27, 27)
+                        .addComponent(nameSrchProdText, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nameSrchProdLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(nameSrchProdText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void nameSrchProdTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameSrchProdTextActionPerformed
-        // TODO add your handling code here:
+                        
     }//GEN-LAST:event_nameSrchProdTextActionPerformed
-
+    private void chargeTable(){
+        try{
+            DefaultTableModel model = new DefaultTableModel();
+            srchProdTable.setModel(model);
+            Connection connection = con.open();
+            PreparedStatement selProd = connection.prepareStatement("select p.id,p.name,p.price,c.name "
+                    + "from products as p, categorys as c"
+                    + " where p.id_category = c.id AND "
+                    + "p.name LIKE \"%"+ nameSrchProdText.getText().trim().toUpperCase() +"%\"");
+            
+            ResultSet data = selProd.executeQuery();
+            model.addColumn("ID");
+            model.addColumn("NOMBRE");
+            model.addColumn("PRECIO");
+            model.addColumn("CATEGORIA");
+            srchProdTable.getColumnModel().getColumn(0).setPreferredWidth(15);
+            srchProdTable.getColumnModel().getColumn(1).setPreferredWidth(75);
+            srchProdTable.getColumnModel().getColumn(2).setPreferredWidth(75);
+            srchProdTable.getColumnModel().getColumn(3).setPreferredWidth(75);
+            while(data.next()){
+                Object row[] = new Object[4];
+                for(int i=0;i<4;i++){
+                    row[i] = data.getObject(i+1);
+                }
+                model.addRow(row);
+            }
+            con.close();
+            
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null,"Error: "+e);
+        }
+    }
+    private void nameSrchProdTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameSrchProdTextKeyReleased
+        chargeTable();
+    }//GEN-LAST:event_nameSrchProdTextKeyReleased
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane2;

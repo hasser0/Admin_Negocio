@@ -1,6 +1,5 @@
 package admin;
 
-import java.awt.HeadlessException;
 import javax.swing.*;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
@@ -98,7 +97,7 @@ public class CategoryPane extends javax.swing.JPanel {
             DefaultTableModel model = new DefaultTableModel();
             catTable.setModel(model);
             Connection connection = con.open();
-            PreparedStatement catSel = connection.prepareStatement("select * from category");
+            PreparedStatement catSel = connection.prepareStatement("select * from categorys");
             
             ResultSet data = catSel.executeQuery();
             ResultSetMetaData metadata = catSel.getMetaData();
@@ -122,9 +121,13 @@ public class CategoryPane extends javax.swing.JPanel {
         }
     }
     private void addCatBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCatBtnActionPerformed
+        if(nameCatText.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Nombre vacio");
+            return;
+        }
         try{
             Connection connection = con.open();
-            PreparedStatement insertCat = connection.prepareStatement("insert into category values (?,?)");
+            PreparedStatement insertCat = connection.prepareStatement("insert into categorys values (?,?)");
             insertCat.setString(1,"0");
             insertCat.setString(2,nameCatText.getText().trim().toUpperCase());
             insertCat.executeUpdate();
@@ -132,11 +135,11 @@ public class CategoryPane extends javax.swing.JPanel {
             chargeTable();
             nameCatText.setText("");
             con.close();
-        }catch(HeadlessException | SQLException e){
+        }catch( SQLException e){
             JOptionPane.showMessageDialog(null,"Error"+ e);
         }
     }//GEN-LAST:event_addCatBtnActionPerformed
-
+    
     private void delCatBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delCatBtnActionPerformed
         if(catTable.getSelectedRow()==-1){
             JOptionPane.showMessageDialog(null,"Selecciona una fila");
@@ -145,7 +148,7 @@ public class CategoryPane extends javax.swing.JPanel {
         try{
             Connection connection = con.open();
             
-            PreparedStatement delTable = connection.prepareStatement("delete from category where id = ?");
+            PreparedStatement delTable = connection.prepareStatement("delete from categorys where id = ?");
             delTable.setString(1, catTable.getModel().getValueAt(catTable.getSelectedRow(), 0).toString().trim());
             
             delTable.executeUpdate();
@@ -153,8 +156,12 @@ public class CategoryPane extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Categoria eliminada");
             chargeTable();
             con.close();
-        }catch(HeadlessException | SQLException e){
-            JOptionPane.showMessageDialog(null, "Error: "+e);
+        }catch(SQLException e){
+            if (e.getClass()== SQLIntegrityConstraintViolationException.class){
+                JOptionPane.showMessageDialog(null,"No se puede eliminar este elemento");
+            }else{
+                JOptionPane.showMessageDialog(null,"Error: "+e);
+            }
         }
     }//GEN-LAST:event_delCatBtnActionPerformed
 

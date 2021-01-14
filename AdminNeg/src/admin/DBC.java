@@ -1,6 +1,8 @@
 package admin;
 import javax.swing.*;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class DBC {
     
     //Instance from java.sql
@@ -23,7 +25,6 @@ public class DBC {
             
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(URL,USERNAME,PASSWORD);   
-            
         }catch(Exception e){
             
             javax.swing.JOptionPane.showMessageDialog(null,"Error: "+ e);
@@ -47,5 +48,13 @@ public class DBC {
             instance = new DBC();
         }
         return instance;
+    }
+    public void setAutoCommit(boolean b){
+        try {
+            con.setAutoCommit(b);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: "+e);
+        }
+
     }
 }

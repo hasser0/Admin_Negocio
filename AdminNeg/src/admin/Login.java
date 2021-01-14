@@ -1,19 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package admin;
 
-/**
- *
- * @author hasser
- */
+import java.sql.*;
+
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    DBC con = DBC.getInstance();
     public Login() {
         initComponents();
         this.setResizable(false);
@@ -126,6 +117,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_idLoginTextActionPerformed
 
     private void loginLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginLoginBtnActionPerformed
+        Connection connection = con.open();
         
     }//GEN-LAST:event_loginLoginBtnActionPerformed
 
