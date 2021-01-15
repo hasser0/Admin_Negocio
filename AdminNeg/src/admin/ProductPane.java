@@ -29,7 +29,7 @@ public class ProductPane extends javax.swing.JPanel {
         delProdBtn = new javax.swing.JButton();
         priceProdSpinner = new javax.swing.JSpinner();
         nameProdLabel5 = new javax.swing.JLabel();
-        catProdCombo = new javax.swing.JComboBox<>();
+        catProdBox = new javax.swing.JComboBox<>();
 
         changeProdBtn.setText("Modificar");
 
@@ -106,24 +106,24 @@ public class ProductPane extends javax.swing.JPanel {
         add(nameProdLabel5);
         nameProdLabel5.setBounds(20, 150, 90, 26);
 
-        catProdCombo.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+        catProdBox.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                catProdComboPopupMenuWillBecomeVisible(evt);
+                catProdBoxPopupMenuWillBecomeVisible(evt);
             }
         });
-        catProdCombo.addActionListener(new java.awt.event.ActionListener() {
+        catProdBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                catProdComboActionPerformed(evt);
+                catProdBoxActionPerformed(evt);
             }
         });
-        add(catProdCombo);
-        catProdCombo.setBounds(130, 210, 140, 40);
+        add(catProdBox);
+        catProdBox.setBounds(130, 210, 140, 40);
     }// </editor-fold>//GEN-END:initComponents
-    private void chargeTable(){
+    public void chargeTable(){
         try{
             DefaultTableModel model = new DefaultTableModel();
             prodTable.setModel(model);
@@ -163,11 +163,12 @@ public class ProductPane extends javax.swing.JPanel {
         }
         try{
             Connection connection = con.open();
-            PreparedStatement insertProd = connection.prepareStatement("insert into products values (?,?,?,?,?)");
+            PreparedStatement insertProd = connection.prepareStatement(""
+                    + "insert into products values (?,?,?,?,?)");
             insertProd.setString(1,"0");
             insertProd.setString(2,nameProdText.getText().trim().toUpperCase());
             insertProd.setString(3,priceProdSpinner.getValue().toString());
-            insertProd.setString(4,getIdCategory(catProdCombo.getSelectedItem().toString()));
+            insertProd.setString(4,getIdCategory(catProdBox.getSelectedItem().toString()));
             insertProd.setString(5,quantProdSpinner.getValue().toString());
             insertProd.executeUpdate();
             JOptionPane.showMessageDialog(null,"Producto agregado");
@@ -219,11 +220,11 @@ public class ProductPane extends javax.swing.JPanel {
     
     }//GEN-LAST:event_delProdBtnActionPerformed
 
-    private void catProdComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_catProdComboActionPerformed
+    private void catProdBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_catProdBoxActionPerformed
         
-    }//GEN-LAST:event_catProdComboActionPerformed
+    }//GEN-LAST:event_catProdBoxActionPerformed
 
-    private void catProdComboPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_catProdComboPopupMenuWillBecomeVisible
+    private void catProdBoxPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_catProdBoxPopupMenuWillBecomeVisible
         try{
             Connection connection = con.open();
             PreparedStatement selCat = connection.prepareStatement("select name from categorys");
@@ -233,17 +234,17 @@ public class ProductPane extends javax.swing.JPanel {
             while(data.next()){
                 model.addElement(data.getObject(1));
             }
-            catProdCombo.setModel(model);
+            catProdBox.setModel(model);
             con.close();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: "+e);
         }
-    }//GEN-LAST:event_catProdComboPopupMenuWillBecomeVisible
+    }//GEN-LAST:event_catProdBoxPopupMenuWillBecomeVisible
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addProdBtn;
-    private javax.swing.JComboBox<String> catProdCombo;
+    private javax.swing.JComboBox<String> catProdBox;
     private javax.swing.JLabel catProdLabel;
     private javax.swing.JButton changeProdBtn;
     private javax.swing.JButton cleanProdBtn;

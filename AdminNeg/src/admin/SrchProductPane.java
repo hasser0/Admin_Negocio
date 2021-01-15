@@ -55,7 +55,7 @@ public class SrchProductPane extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "NOMBRE", "PRECIO", "CATEGORIA"
+                "ID", "NOMBRE", "PRECIO", "CANTIDAD", "CATEGORIA"
             }
         ));
         jScrollPane2.setViewportView(srchProdTable);
@@ -94,12 +94,12 @@ public class SrchProductPane extends javax.swing.JPanel {
     private void nameSrchProdTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameSrchProdTextActionPerformed
                         
     }//GEN-LAST:event_nameSrchProdTextActionPerformed
-    private void chargeTable(){
+    public void chargeTable(){
         try{
             DefaultTableModel model = new DefaultTableModel();
             srchProdTable.setModel(model);
             Connection connection = con.open();
-            PreparedStatement selProd = connection.prepareStatement("select p.id,p.name,p.price,c.name "
+            PreparedStatement selProd = connection.prepareStatement("select p.id,p.name,p.price,p.quantity,c.name "
                     + "from products as p, categorys as c"
                     + " where p.id_category = c.id AND "
                     + "p.name LIKE \"%"+ nameSrchProdText.getText().trim().toUpperCase() +"%\"");
@@ -108,14 +108,16 @@ public class SrchProductPane extends javax.swing.JPanel {
             model.addColumn("ID");
             model.addColumn("NOMBRE");
             model.addColumn("PRECIO");
+            model.addColumn("CANTIDAD");
             model.addColumn("CATEGORIA");
             srchProdTable.getColumnModel().getColumn(0).setPreferredWidth(15);
             srchProdTable.getColumnModel().getColumn(1).setPreferredWidth(75);
             srchProdTable.getColumnModel().getColumn(2).setPreferredWidth(75);
             srchProdTable.getColumnModel().getColumn(3).setPreferredWidth(75);
+            srchProdTable.getColumnModel().getColumn(4).setPreferredWidth(75);
             while(data.next()){
-                Object row[] = new Object[4];
-                for(int i=0;i<4;i++){
+                Object row[] = new Object[5];
+                for(int i=0;i<5;i++){
                     row[i] = data.getObject(i+1);
                 }
                 model.addRow(row);

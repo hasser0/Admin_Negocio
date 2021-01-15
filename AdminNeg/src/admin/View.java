@@ -34,10 +34,33 @@ import java.util.logging.Logger;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tabbedPane.setPreferredSize(new java.awt.Dimension(750, 450));
+        tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tabbedPaneStateChanged(evt);
+            }
+        });
+
+        srchProdPane.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                srchProdPaneFocusGained(evt);
+            }
+        });
         tabbedPane.addTab("Buscar Productos", srchProdPane);
         tabbedPane.addTab("Vender", sellPane);
+
+        inventoryPane.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                inventoryPaneFocusGained(evt);
+            }
+        });
         tabbedPane.addTab("Inventario", inventoryPane);
         tabbedPane.addTab("Categorias", categoryPane);
+
+        productPane.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                productPaneFocusGained(evt);
+            }
+        });
         tabbedPane.addTab("Productos", productPane);
         tabbedPane.addTab("Proveedores", providerPane);
         tabbedPane.addTab("Usuarios", userPane);
@@ -75,6 +98,24 @@ import java.util.logging.Logger;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void srchProdPaneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_srchProdPaneFocusGained
+        
+    }//GEN-LAST:event_srchProdPaneFocusGained
+
+    private void inventoryPaneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_inventoryPaneFocusGained
+        
+    }//GEN-LAST:event_inventoryPaneFocusGained
+
+    private void productPaneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_productPaneFocusGained
+        
+    }//GEN-LAST:event_productPaneFocusGained
+
+    private void tabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPaneStateChanged
+        productPane.chargeTable();
+        inventoryPane.chargeTable();
+        srchProdPane.chargeTable();
+    }//GEN-LAST:event_tabbedPaneStateChanged
+
     
     public static void main(String args[]) {
         
@@ -85,6 +126,7 @@ import java.util.logging.Logger;
         });
     }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private admin.CategoryPane categoryPane;
     private admin.InventoryPane inventoryPane;
