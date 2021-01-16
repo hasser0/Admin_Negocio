@@ -1,12 +1,14 @@
 package admin;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
     DBC con = DBC.getInstance();
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle("Administrador de Negocios");        
     }
@@ -118,7 +120,72 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_idLoginTextActionPerformed
 
     private void loginLoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginLoginBtnActionPerformed
-        Connection connection = con.open();
+        String userId = idLoginText.getText().trim();
+        String userPwd = String.valueOf(pwdLoginPwd.getPassword());
+        if(userId.equals("")){
+            JOptionPane.showMessageDialog(null, "Usuario vacio");
+            return;
+        }
+        if(userPwd.equals("")){
+            JOptionPane.showMessageDialog(null, "Contraseña vacia");
+            return;
+        }
+        try{
+            Connection connection = con.open();
+            PreparedStatement selUsers = connection.prepareStatement(""
+                    + "select * from users");
+            ResultSet data = selUsers.executeQuery();
+            while(data.next()){
+                String idAux = data.getObject(ID_USER).toString();
+                String nameAux = data.getObject(NAME_USER).toString();
+                String pwdAux = data.getObject(PWD_USER).toString();
+                String permAux = data.getObject(PERM_USER).toString();
+                
+                if(idAux.equals(userId) && pwdAux.equals(userPwd)){
+                    idUserSession = idAux;
+                    nameUserSession = nameAux;
+                    permUserSession = permAux;
+                    break;
+                }
+            }
+            System.out.println("1");
+            switch(permUserSession){
+                case "TRABAJADOR":
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            new WorkerView(nameUserSession).setVisible(true);
+                        }
+                    });
+                    this.setVisible(false);
+                    this.dispose();
+                    break;
+                case "ADMINISTRADOR":
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            new AdminView(nameUserSession).setVisible(true);
+                        }
+                    });
+                    this.setVisible(false);
+                    this.dispose();
+                    break;
+                case "JEFE(PELIGRO)":
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            new View(nameUserSession).setVisible(true);
+                        }
+                    });
+                    this.setVisible(false);
+                    this.dispose();
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Usuario invalido");
+                    return;
+            }
+            con.close();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null,"Error: "+e);
+        }
+        
         
     }//GEN-LAST:event_loginLoginBtnActionPerformed
 
@@ -161,7 +228,13 @@ public class Login extends javax.swing.JFrame {
             }
         });
     }
-
+    private int ID_USER = 1;
+    private int NAME_USER = 2;
+    private int PWD_USER = 3;
+    private int PERM_USER = 4;
+    private String idUserSession = "";
+    private String nameUserSession = "";
+    private String permUserSession = "";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cleanLoginLabel;
     private javax.swing.JLabel idLoginLabel;

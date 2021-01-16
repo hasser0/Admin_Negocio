@@ -7,11 +7,12 @@ import java.util.logging.Logger;
     public class View extends javax.swing.JFrame {
     
     
-    public View() {
+    public View(String user) {
         initComponents();
         setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle("Administrador de Negocios");
+        usernameViewLabel.setText(user);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -76,7 +77,7 @@ import java.util.logging.Logger;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(usernameViewLabel)
@@ -116,7 +117,7 @@ import java.util.logging.Logger;
         srchProdPane.chargeTable();
     }//GEN-LAST:event_tabbedPaneStateChanged
 
-    
+    /*
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -125,7 +126,7 @@ import java.util.logging.Logger;
             }
         });
     }
-
+*/
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private admin.CategoryPane categoryPane;

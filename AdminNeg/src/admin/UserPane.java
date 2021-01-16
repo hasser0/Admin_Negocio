@@ -63,7 +63,7 @@ public class UserPane extends javax.swing.JPanel {
         nameUserLabel.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         nameUserLabel.setText("Nombre:");
 
-        permUserBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trabajador", "Administrador" }));
+        permUserBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Trabajador", "Administrador", "Jefe(peligro)" }));
         permUserBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 permUserBoxActionPerformed(evt);
@@ -267,6 +267,11 @@ public class UserPane extends javax.swing.JPanel {
     private void delUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delUserBtnActionPerformed
         if(userTable.getSelectedRow()==-1){
             JOptionPane.showMessageDialog(null,"Selecciona una fila");
+            return;
+        }
+        String permUser = userTable.getModel().getValueAt(userTable.getSelectedRow(), 2).toString();
+        if(permUser.equals("JEFE(PELIGRO)")){
+            JOptionPane.showMessageDialog(null, "No se puede borrar este usuario");
             return;
         }
         try{
