@@ -12,7 +12,7 @@ import java.util.logging.Logger;
         setLocationRelativeTo(null);
         this.setResizable(false);
         this.setTitle("Administrador de Negocios");
-        usernameViewLabel.setText(user);
+        usernameViewText.setText(user);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
